@@ -1,0 +1,61 @@
+class Solution {
+    public int romanToInt(String s) {
+        int plus=0;
+        if (s==""){
+            return plus;
+        }
+        String[] number=s.split("");
+        for(int i=0;i<number.length;i++){
+            if(number[i].equals("C")&&i!=number.length-1){
+                if(number[i+1].equals("D")){
+                    plus+=400;
+                    i++;
+                continue;
+                }else if(number[i+1].equals("M")){
+                    plus+=900;
+                    i++;
+                continue;
+                }
+            }if(number[i].equals("X")&&i!=number.length-1){
+                if(number[i+1].equals("L")){
+                    plus+=40;
+                    i++;
+                continue;
+                }else if(number[i+1].equals("C")){
+                    plus+=90;
+                    i++;
+                continue;
+                }
+            }
+            if(number[i].equals("I")&&i!=number.length-1){
+                if(number[i+1].equals("V")){
+                    plus+=4;
+                    i++;
+                    continue;
+                }else if(number[i+1].equals("X")){
+                    plus+=9;
+                    i++;
+                    continue;
+                }
+                
+            }
+            if(number[i].equals("I")){
+                plus++;
+            }else if(number[i].equals("V")){
+                plus+=5;
+            }else if(number[i].equals("X")){
+                plus+=10;
+            }else if(number[i].equals("L")){
+                plus+=50;
+            }else if(number[i].equals("C")){
+                plus+=100;
+            }else if(number[i].equals("D")){
+                plus+=500;
+            }else if(number[i].equals("M")){
+                plus+=1000;
+            }
+        
+        }
+        return plus;
+    }
+}
