@@ -1,0 +1,42 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        ListNode tail =new ListNode(0);//設尾巴
+        ListNode head =tail;//set head
+        int record=0;//remember the sum
+        while(l1!=null || l2!=null){//check l1 or l2 not finish
+            int numbers=0;
+            if(l1!=null&&l2==null){//find if l1.length>l2.length
+                numbers=l1.val+record;
+            }      
+            else if(l1==null&&l2!=null){//find if l1.length<l2.length
+                numbers=l2.val+record;
+            }
+            else{
+                numbers=l1.val+l2.val+record;
+            }
+            record=numbers/10;//get the 進位
+            numbers%=10;//get the餘數
+
+
+            tail.next = new ListNode(numbers);  
+            tail = tail.next;
+            if(l1!=null)l1=l1.next;//check li not null
+            if(l2!=null)l2=l2.next;//check l2 not null
+        }
+        if(record>0){//check 進位
+            tail.next =new ListNode(record);
+        }
+        return head.next;
+    }
+}
