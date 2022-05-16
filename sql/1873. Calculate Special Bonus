@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+select employee_id,
+case 
+    when (name NOT LIKE"M%")AND (employee_id %2=1) 
+    then salary
+    else 0
+end 
+    AS bonus 
+from Employees  
