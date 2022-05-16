@@ -1,0 +1,31 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if(numRows==1)return s;
+        //切割成numsRows個
+        StringBuilder[] sbs = new StringBuilder[numRows];
+        // 建立每一個SB裡一個SB
+	     for ( int i=0;i<numRows;i++){
+	         sbs[i] = new StringBuilder();
+	     }
+	     char[] ch = s.toCharArray();//s length char[]
+	     int len = ch.length;// s.length
+	     int index =0;
+	     while(index<len){
+	       //  從上往下()
+	         for(int i=0 ; i<numRows && index< len ; i++){
+	             sbs[i].append(ch[index++]);
+	         }
+	       // 反向由下網上(-1剪掉尾巴-1扣一)
+	         for(int i=numRows-2 ; i>0 && index < len ; i--){
+	             sbs[i].append(ch[index++]);
+	         }
+	     }
+        //把SB裡的裝到String上
+        String result = "";
+	   for(int i=0;i<numRows;i++) {
+	       result+=sbs[i];
+	   }
+	   return result;    
+        
+    }
+}
