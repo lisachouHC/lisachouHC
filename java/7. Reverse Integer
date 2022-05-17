@@ -1,0 +1,22 @@
+class Solution {
+    public int reverse(int x) {
+
+        String cut=Integer.toString(Math.abs(x));
+        String []step=cut.split("");
+        int end=0;
+        int answer=0;
+        if(step[0].equals("-")){
+            return 0;
+        }
+        for(int i=step.length-1;i>=end;i--){
+            answer+=Integer.parseInt(step[i])*Math.pow(10,i);
+        }
+        if(x<0){
+            answer*=-1;
+        }
+        if(answer>=Math.pow(2,31)-1||answer<=Math.pow(-2,31)+1){
+            return 0;
+        }
+        return answer;
+    }
+}
