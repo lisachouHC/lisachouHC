@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isValid(String s) {
+
+        Map<Character,Character> map = new HashMap();
+        map.put(')','(');
+        map.put('}','{');
+        map.put(']','[');
+        LinkedList<Character> stack = new LinkedList<>();
+        for(int i=0;i<s.length();i++){
+            //分開每一個參數
+            char c=s.charAt(i);
+            if(c == '(' || c=='{'||c=='['){
+                //放進左邊
+                stack.push(c);
+            }else{
+                //把右邊吐出來
+                if(map.get(c).equals(stack.peek())){ //If closing pop
+                    stack.pop();
+                }else{
+                    //放進去
+                    stack.push(c);
+                }
+            }
+        }
+        //確認是否為空
+        return stack.isEmpty();
+        
+    }
+}
