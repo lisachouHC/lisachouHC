@@ -1,0 +1,33 @@
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int com=nums[0]+nums[1]+nums[2];
+        if(com==target){
+            return target;
+        }
+        int i=0;
+        int curt=0;
+        //target<1000&&target<-1000=>2002
+        int cloest=2002+target;
+        while(i<nums.length-2){
+            int left=i+1;
+            int right=nums.length-1;
+            curt=target-nums[i];
+            while(left<right){
+                int sum=nums[right]+nums[left];
+                if(Math.abs(target-cloest)>Math.abs(curt-sum)){
+                   cloest=nums[i]+sum; 
+                }
+                if(sum>curt){
+                    right--;
+                }else if(sum<curt){
+                    left++;
+                }else{
+                    return target;
+                }
+            }
+            i++;
+        }
+        return cloest;
+    }
+}
