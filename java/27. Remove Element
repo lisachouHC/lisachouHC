@@ -1,0 +1,18 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int answer=0;
+int j=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=val){
+                nums[j++]=nums[i];
+            }
+        }
+        
+        return j;
+    }
+    public void swap(int[] s,int x,int y){
+        int z=s[x];
+        s[x]=s[y];
+        s[y]=z;
+    }
+}
