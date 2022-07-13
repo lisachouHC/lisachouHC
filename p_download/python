@@ -1,0 +1,42 @@
+from bs4 import BeautifulSoup
+import requests
+import os
+
+input_image = input("請輸入要下載的網址：")
+
+response = requests.get(f"{input_image}")
+soup = BeautifulSoup(response.text, "lxml")
+#click-開啟更多
+button = soup.find_element_by_class('sc-emr523-2 wEKy')
+button.click()
+
+
+#圖片URL
+items = soup.select('div.sc-1e1hy3c-2 dSqYyx > a[href^="/url"]')
+"""
+results = soup.find_all("a", {"class": "_2VWD4 _2zEKz"})
+image_links = [result.get("href") for result in results]  # 取得圖片來源連結
+"""
+#標題
+title=soup.find("div",{"class":"sc-1u8nu73-3 huVRfc"})
+
+for index, i in items:
+    if not os.path.exists(title):
+        os.mkdir(title)  # 建立資料夾
+    img = requests.get(i.get('href'))  # 下載圖片
+
+    with open(title+"\\" + str(index+1) + ".jpg", "wb") as file:  # 開啟資料夾及命名圖片檔
+        file.write(img.content)  # 寫入圖片的二進位碼    
+
+
+"""
+for index, link in enumerate(image_links):
+
+    if not os.path.exists(title):
+        os.mkdir(title)  # 建立資料夾
+
+    img = requests.get(link)  # 下載圖片
+
+    with open(title+"\\" + str(index+1) + ".jpg", "wb") as file:  # 開啟資料夾及命名圖片檔
+        file.write(img.content)  # 寫入圖片的二進位碼
+"""
