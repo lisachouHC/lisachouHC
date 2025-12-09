@@ -1,10 +1,10 @@
-- 👋 Hi, I’m @lisachouHC
-- 👀 I’m interested in improbing myself
-- 🌱 I’m currently learning java and javascript
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+關於我
+-
+對於AI相關的圖片創建跟建立便捷工具感興趣
 
-<!---
-lisachouHC/lisachouHC is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+AI讓生活變得更加方便，不管是創造工具或是使用它都有效果
+
+業餘時間也會製作一些遊戲
+
+也會整理一些自己學到的知識
+
